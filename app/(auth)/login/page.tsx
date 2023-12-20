@@ -1,7 +1,10 @@
+import FormLogin from "@/components/auth/FormLogin/FormLogin";
+
 export default function LoginPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <div className="flex min-h-screen flex-col items-center p-24">
       <h1>login</h1>
-    </main>
+      <FormLogin />
+    </div>
   );
 }

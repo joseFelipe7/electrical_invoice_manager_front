@@ -3,8 +3,8 @@ import { Controller, useFormContext } from "react-hook-form";
 import { InputFormProps } from "./types";
 import * as _ from "lodash";
 
+import * as S from "./styles";
 import MaskedInput from "../MaskedInput/MaskedInput";
-import { Box, TextField, Typography } from "@mui/material";
 
 export function InputForm({
   controller,
@@ -16,13 +16,13 @@ export function InputForm({
     mask: "",
   },
 }: InputFormProps) {
-  const { disabled } = input;
+  const { disabled, type } = input;
   const { setValue } = useFormContext();
   const { state } = input;
 
   function renderHeader() {
     if (fieldHeader) return fieldHeader;
-    if (label) return <Typography>{label}</Typography>;
+    if (label) return <S.Label>{label}</S.Label>;
     return null;
   }
 
@@ -34,7 +34,7 @@ export function InputForm({
   }, [state]);
 
   return (
-    <Box>
+    <S.FieldContainer>
       {renderHeader()}
       <Controller
         {...controller}
@@ -54,8 +54,8 @@ export function InputForm({
                 data-test={`${name}-testId`}
               >
                 {(inputProps: any) => (
-                  <TextField
-                    color="neutral"
+                  <S.Input
+                    // color="neutral"
                     {...input}
                     {...field}
                     {...inputProps}
@@ -64,21 +64,19 @@ export function InputForm({
                     size="small"
                     sx={{ width: "100%" }}
                     data-test={`${name}-testId`}
+                    type={`${type || "text"}`}
                   />
                 )}
               </MaskedInput>
               {fieldError && !input.disabled && (
-                <Typography color="error" variant="body1">
+                <S.ErrorMessage color="error" variant="body1">
                   {fieldError.message as string}
-                </Typography>
-                // <S.ErrorMessage color="error" variant="body1">
-                //   {fieldError.message as string}
-                // </S.ErrorMessage>
+                </S.ErrorMessage>
               )}
             </Fragment>
           );
         }}
       />
-    </Box>
+    </S.FieldContainer>
   );
 }
