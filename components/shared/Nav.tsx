@@ -8,6 +8,7 @@ const navigation = [
   { name: "Notas Fiscais", href: "/notas" },
   { name: "Login", href: "/login" },
   { name: "Registro", href: "/registro" },
+  { name: "Nova fatura", href: "/novafatura" },
 ];
 
 function classNames(...classes: string[]) {
