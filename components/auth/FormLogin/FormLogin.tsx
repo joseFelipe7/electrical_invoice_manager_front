@@ -69,12 +69,7 @@ export default function FormLogin() {
           {/* <S.InputContainer>
             <InputPass />
           </S.InputContainer> */}
-          <S.Subtitle>
-            <Link href="/alterar-senha">
-              <S.StyledLink>CLIQUE AQUI</S.StyledLink>
-            </Link>
-            {""} E REDEFINA SUA SENHA
-          </S.Subtitle>
+
           <S.SubmitButton color="primary" variant="contained" type="submit">
             Entrar
           </S.SubmitButton>

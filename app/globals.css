@@ -4,24 +4,29 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  --background-start-rgb: 242, 242, 242;
+  --background-end-rgb: 242, 242, 242;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --background-color: #f2f2f2;
+  --primary-color: #023b21; /* Destaque principal */
+  --accent-color: #00ff89; /* Detalhes acentuados */
+  --subtle-color: #447b61; /* Detalhes sutis, efeitos de transparência, etc. */
+  --important-info-color: #ff5b00;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(----background-color);
+
+  /* background-image: linear-gradient(
+    117deg,
+    var(--important-info-color) 0%,
+    #e56b00 100%
+  ); */
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
