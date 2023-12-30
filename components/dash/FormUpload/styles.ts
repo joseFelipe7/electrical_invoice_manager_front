@@ -20,7 +20,9 @@ export const Container = styled(Box)`
 export const ContentContainer = styled(Box)`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: row;
+  height: 100%;
 `;
 
 export const Title = styled(Typography)`
@@ -38,6 +40,7 @@ export const SubmitButton = styled(Button)`
   border-radius: 24px !important;
   margin-top: 24px;
   font-weight: 700;
+  background: var(--important-info-color);
 `;
 
 export const FormContainer = styled(Box)`
@@ -62,4 +65,8 @@ export const StyledLink = styled.a`
   color: #ed1e79;
   text-decoration: underline;
   cursor: pointer;
+`;
+
+export const ErrorMessage = styled(Typography)`
+  font-size: 0.75rem;
 `;

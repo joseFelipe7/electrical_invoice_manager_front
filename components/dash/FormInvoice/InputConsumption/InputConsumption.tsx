@@ -1,7 +1,7 @@
 import { InputForm } from "@/components/shared/InputForm/InputForm";
 import { useFormContext } from "react-hook-form";
 
-export function InputEmail() {
+export function InputConsumption() {
   const { control } = useFormContext();
-  return <InputForm controller={{ name: "email", control }} input={{type:'email'}} label="Email" />;
+  return <InputForm controller={{ name: "number", control }} label="Consumo" />;
 }

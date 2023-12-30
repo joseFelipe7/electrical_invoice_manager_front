@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const loginFormSchema = yup
+export const invoiceFormSchema = yup
   .object({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
     password: yup
