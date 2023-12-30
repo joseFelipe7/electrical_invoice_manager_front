@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { LoginFormPayload } from "./types";
 
 import * as S from "./styles";
+import * as StyleDash from "../styles";
 import { BaseForm } from "@/components/shared/BaseForm/BaseForm";
 import api from "@/src/plugins/_core/axiosInstance";
 import { InputFile } from "./InputFile/InputFile";
@@ -70,30 +71,32 @@ export default function FormUpload() {
   }
 
   return (
-    <S.Container>
-      <S.ContentContainer>
-        <BaseForm
-          onSubmit={handleSubmit}
-          config={{
-            mode: "onBlur",
-            reValidateMode: "onBlur",
-          }}
+    <S.ContentContainer>
+      <BaseForm
+        onSubmit={handleSubmit}
+        config={{
+          mode: "onBlur",
+          reValidateMode: "onBlur",
+        }}
+      >
+        <S.InputContainer>
+          <InputFile onChange={handleFile} />
+        </S.InputContainer>
+
+        {errorFile?.message && (
+          <S.ErrorMessage color="error" variant="body1">
+            {errorFile?.message as string}
+          </S.ErrorMessage>
+        )}
+
+        <StyleDash.SubmitButton
+          color="primary"
+          variant="contained"
+          type="submit"
         >
-          <S.InputContainer>
-            <InputFile onChange={handleFile} />
-          </S.InputContainer>
-
-          {errorFile?.message && (
-            <S.ErrorMessage color="error" variant="body1">
-              {errorFile?.message as string}
-            </S.ErrorMessage>
-          )}
-
-          <S.SubmitButton color="primary" variant="contained" type="submit">
-            Entrar
-          </S.SubmitButton>
-        </BaseForm>
-      </S.ContentContainer>
-    </S.Container>
+          Entrar
+        </StyleDash.SubmitButton>
+      </BaseForm>
+    </S.ContentContainer>
   );
 }

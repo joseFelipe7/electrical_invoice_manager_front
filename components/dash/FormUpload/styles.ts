@@ -3,26 +3,14 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export const Container = styled(Box)`
-  width: 44.25rem;
-  height: 40.25rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #ffffff;
-  padding: 64px;
-  border-radius: 2;
-  box-shadow: 0px 62px 97px rgba(32, 32, 32, 0.33),
-    0px 13.8485px 21.6662px rgba(32, 32, 32, 0.196715),
-    0px 4.12306px 6.4506px rgba(32, 32, 32, 0.133285);
-`;
-
 export const ContentContainer = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   height: 100%;
+  padding: 20px;
+  margin-bottom: 40px;
 `;
 
 export const Title = styled(Typography)`
@@ -34,15 +22,6 @@ export const LogoContainer = styled(Box)`
   margin-top: 56px;
 `;
 
-export const SubmitButton = styled(Button)`
-  width: 20.4375rem;
-  height: 3rem;
-  border-radius: 24px !important;
-  margin-top: 24px;
-  font-weight: 700;
-  background: var(--important-info-color);
-`;
-
 export const FormContainer = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -51,6 +30,8 @@ export const FormContainer = styled(Box)`
 `;
 
 export const InputContainer = styled(Box)`
+  display: flex;
+  justify-content: center;
   margin: 16px 0px;
 `;
 

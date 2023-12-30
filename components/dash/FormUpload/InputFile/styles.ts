@@ -1,7 +1,8 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import styled from "styled-components";
 
 export const VisuallyHiddenInput = styled("input")({
+  display: "none",
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
   height: 1,

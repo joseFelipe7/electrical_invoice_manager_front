@@ -10,6 +10,7 @@ import { invoiceFormSchema } from "./schemas";
 import { LoginFormPayload } from "./types";
 
 import * as S from "./styles";
+import * as StyleDash from "../styles";
 // import { InputPass } from "./InputPass/InputPass";
 import { InputMeasure } from "./InputMeasure/InputMeasure";
 import { InputConsumption } from "./InputConsumption/InputConsumption";
@@ -26,14 +27,8 @@ export default function FormInvoice() {
         `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
         payload
       );
-      const { token } = responseData;
-      const { data: decryptData }: any = jwtDecode(token);
 
-      if (decryptData.id) sessionStorage.setItem("userId", decryptData.id);
-      if (decryptData.fullName)
-        sessionStorage.setItem("name", decryptData.fullName);
-
-      router.push("/agendamentos");
+      //router.push("/agendamentos");
     } catch (err: any) {
       const { message } = err.response?.data;
     } finally {
@@ -41,33 +36,36 @@ export default function FormInvoice() {
   }
 
   return (
-    <S.Container>
-      <S.ContentContainer>
-        <BaseForm
-          onSubmit={handleSubmit}
-          config={{
-            mode: "onBlur",
-            reValidateMode: "onBlur",
-            resolver: yupResolver(invoiceFormSchema),
-          }}
+    <S.ContentContainer>
+      <BaseForm
+        onSubmit={handleSubmit}
+        config={{
+          mode: "onBlur",
+          reValidateMode: "onBlur",
+          resolver: yupResolver(invoiceFormSchema),
+        }}
+      >
+        <S.InputContainer>
+          <InputMeasure />
+        </S.InputContainer>
+
+        <S.InputContainer>
+          <InputConsumption />
+        </S.InputContainer>
+
+        <S.InputContainer>
+          <InputDateConsumption />
+        </S.InputContainer>
+
+        <StyleDash.SubmitButton
+          color="primary"
+          variant="contained"
+          type="submit"
+          sx={{ width: "100%" }}
         >
-          <S.InputContainer>
-            <InputMeasure />
-          </S.InputContainer>
-
-          <S.InputContainer>
-            <InputConsumption />
-          </S.InputContainer>
-
-          <S.InputContainer>
-            <InputDateConsumption />
-          </S.InputContainer>
-
-          <S.SubmitButton color="primary" variant="contained" type="submit">
-            SALVAR
-          </S.SubmitButton>
-        </BaseForm>
-      </S.ContentContainer>
-    </S.Container>
+          SALVAR
+        </StyleDash.SubmitButton>
+      </BaseForm>
+    </S.ContentContainer>
   );
 }

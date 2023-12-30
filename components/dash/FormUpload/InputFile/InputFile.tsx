@@ -23,7 +23,7 @@ export function InputFile({
   return (
     <Button
       component="label"
-      variant="contained"
+      variant="outlined"
       startIcon={<CloudUploadIcon />}
     >
       Enviar Fatura

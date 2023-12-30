@@ -8,6 +8,9 @@ import MaskedInput from "../MaskedInput/MaskedInput";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+
 export function DatePickerForm({
   controller,
   input = { error: false },
@@ -56,17 +59,19 @@ export function DatePickerForm({
                 data-test={`${name}-testId`}
               >
                 {(inputProps: any) => (
-                  <DatePicker
-                    {...input}
-                    {...field}
-                    {...inputProps}
-                    value={field.value}
-                    error={!!fieldError && !input.disabled}
-                    size="small"
-                    sx={{ width: "100%" }}
-                    data-test={`${name}-testId`}
-                    type={`${type || "date"}`}
-                  />
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      {...input}
+                      {...field}
+                      {...inputProps}
+                      value={field.value}
+                      error={!!fieldError && !input.disabled}
+                      size="small"
+                      sx={{ width: "100%" }}
+                      data-test={`${name}-testId`}
+                      type={`${type || "date"}`}
+                    />
+                  </LocalizationProvider>
                 )}
               </MaskedInput>
               {fieldError && !input.disabled && (
