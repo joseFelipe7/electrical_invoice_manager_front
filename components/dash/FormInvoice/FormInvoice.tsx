@@ -17,6 +17,18 @@ import { InputConsumption } from "./InputConsumption/InputConsumption";
 import { BaseForm } from "@/components/shared/BaseForm/BaseForm";
 import api from "@/src/plugins/_core/axiosInstance";
 import { InputDateConsumption } from "./InputDateConsumption/InputDateConsumption";
+import { InputClienteNumber } from "./InputClienteNumber/InputClienteNumber";
+import { InputInstallationNumber } from "./InputInstallationNumber/InputInstallationNumber";
+import { InputElectricalEnergyConsumption } from "./InputElectricalEnergyConsumption/InputElectricalEnergyConsumption";
+import { InputElectricalEnergyCost } from "./InputElectricalEnergyCost/InputElectricalEnergyCost";
+import { InputElectricalEnergyMeasure } from "./InputElectricalEnergyMeasure/InputEletricalEnergyMeasure";
+import { InputEnergyGDIMeasure } from "./InputEnergyGDIMeasure/InputEnergyGDIMeasure";
+import { InputEnergyGDIConsumption } from "./InputEnergyGDIConsumption/InputEnergyGDIConsumption";
+import { InputEnergyGDICost } from "./InputEnergyGDICost/InputEnergyGDICost";
+import { InputEnergySCEEEMeasure } from "./InputEnergySCEEEMeasure/InputEnergySCEEEMeasure";
+import { InputEnergySCEEEConsumption } from "./InputEnergySCEEEConsumption/InputEnergySCEEEConsumption";
+import { InputEnergySCEEECost } from "./InputEnergySCEEECost/InputEnergySCEEECost";
+import { InputInvoiceAmount } from "./InputInvoiceAmount/InputInvoiceAmount";
 
 export default function FormInvoice() {
   const router = useRouter();
@@ -46,15 +58,46 @@ export default function FormInvoice() {
         }}
       >
         <S.InputContainer>
-          <InputMeasure />
+          <InputClienteNumber />
         </S.InputContainer>
-
         <S.InputContainer>
-          <InputConsumption />
+          <InputInstallationNumber />
         </S.InputContainer>
-
         <S.InputContainer>
           <InputDateConsumption />
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputInvoiceAmount />
+        </S.InputContainer>
+
+        <S.InputContainer>
+          <InputElectricalEnergyMeasure/>
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputElectricalEnergyConsumption/>
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputElectricalEnergyCost/>
+        </S.InputContainer>
+
+        <S.InputContainer>
+          <InputEnergyGDIMeasure/>
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputEnergyGDIConsumption/>
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputEnergyGDICost/>
+        </S.InputContainer>
+
+        <S.InputContainer>
+          <InputEnergySCEEEMeasure/>
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputEnergySCEEEConsumption/>
+        </S.InputContainer>
+        <S.InputContainer>
+          <InputEnergySCEEECost/>
         </S.InputContainer>
 
         <StyleDash.SubmitButton
