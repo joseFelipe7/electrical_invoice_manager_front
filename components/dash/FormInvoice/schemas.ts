@@ -2,10 +2,8 @@ import * as yup from "yup";
 
 export const invoiceFormSchema = yup
   .object({
-    email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
-    password: yup
-      .string()
-      .required("Campo obrigatório")
-      .min(6, "Senha não pode ter menos de 6 dígitos"),
+    consumption: yup.number().required("Campo obrigatório"),
+    measure: yup.string().required("Campo obrigatório"),
+    dateConsumption: yup.date().required("Campo obrigatório"),
   })
   .required();

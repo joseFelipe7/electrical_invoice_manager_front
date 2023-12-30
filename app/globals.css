@@ -12,6 +12,7 @@
   --accent-color: #00ff89; /* Detalhes acentuados */
   --subtle-color: #447b61; /* Detalhes sutis, efeitos de transparência, etc. */
   --important-info-color: #ff5b00;
+  --important-info-shadow: #ff772e;
 }
 
 body {

@@ -1,5 +1,4 @@
 import { useFormContext } from "react-hook-form";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DatePickerForm } from "@/components/shared/DatePickerForm/DatePickerForm";
 
 export function InputDateConsumption() {
@@ -7,9 +6,9 @@ export function InputDateConsumption() {
 
   return (
     <DatePickerForm
-      controller={{ name: "", control }}
-      label="Consumo"
-      input={{ views: ["month", "year"] }}
+      controller={{ name: "dateConsumption", control }}
+      label="Referente a"
+      input={{ views: ["month", "year"], type: "date" }}
     />
   );
 }
