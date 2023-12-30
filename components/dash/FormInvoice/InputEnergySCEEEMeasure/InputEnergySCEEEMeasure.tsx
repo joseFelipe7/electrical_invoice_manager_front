@@ -3,5 +3,5 @@ import { useFormContext } from "react-hook-form";
 
 export function InputEnergySCEEEMeasure() {
   const { control } = useFormContext();
-  return <InputForm controller={{ name: "text", control }} label="Energia SCEE s/ ICMS unidade" />;
+  return <InputForm controller={{ name: "energySCEEEMeasure", control }} label="Energia SCEE s/ ICMS unidade" />;
 }

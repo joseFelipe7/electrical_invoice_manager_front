@@ -3,5 +3,5 @@ import { useFormContext } from "react-hook-form";
 
 export function InputElectricalEnergyCost() {
   const { control } = useFormContext();
-  return <InputForm controller={{ name: "number", control }} label="Energia Elétrica valor" />;
+  return <InputForm controller={{ name: "electricalEnergyCost", control }} label="Energia Elétrica valor" />;
 }

@@ -3,5 +3,5 @@ import { useFormContext } from "react-hook-form";
 
 export function InputInstallationNumber() {
   const { control } = useFormContext();
-  return <InputForm controller={{ name: "text", control }} label="N da instalação" />;
+  return <InputForm controller={{ name: "installationNumber", control }} label="N da instalação" />;
 }

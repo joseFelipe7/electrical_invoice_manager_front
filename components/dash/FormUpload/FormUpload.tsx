@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from "react";
 export default function FormUpload() {
   const router = useRouter();
 
-  const { getValues } = useForm();
+  const { getValues, setValue } = useForm();
 
   const fileData = useRef<File>();
   const [errorFile, setErrorFile] = useState<{ message: string }>({
@@ -52,7 +52,7 @@ export default function FormUpload() {
       form.append("invoice", fileData.current, fileData.current?.name);
 
       const { data: responseData } = await api.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/readFile`,
+        `${process.env.NEXT_PUBLIC_API_URL}/read-invoice`,
         { invoice: fileData.current },
         {
           headers: {
@@ -60,7 +60,7 @@ export default function FormUpload() {
           },
         }
       );
-
+      setValue("clienteNumber","213")
       console.log(responseData);
       //router.push("/notas");
     } catch (err: any) {
