@@ -9,6 +9,7 @@ const navigation = [
   { name: "Login", href: "/login" },
   { name: "Registro", href: "/registro" },
   { name: "Nova fatura", href: "/novafatura" },
+  { name: "Lista de faturas", href: "/lista" },
 ];
 
 function classNames(...classes: string[]) {

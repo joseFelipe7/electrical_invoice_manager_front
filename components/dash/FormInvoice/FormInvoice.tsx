@@ -29,16 +29,19 @@ import { InputEnergySCEEEMeasure } from "./InputEnergySCEEEMeasure/InputEnergySC
 import { InputEnergySCEEEConsumption } from "./InputEnergySCEEEConsumption/InputEnergySCEEEConsumption";
 import { InputEnergySCEEECost } from "./InputEnergySCEEECost/InputEnergySCEEECost";
 import { InputInvoiceAmount } from "./InputInvoiceAmount/InputInvoiceAmount";
+import { useForm, useFormContext } from "react-hook-form";
 
 export default function FormInvoice() {
   const router = useRouter();
-
+  const {setValue}= useFormContext();
   async function handleSubmit(payload: LoginFormPayload) {
     try {
-      const { data: responseData } = await api.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-        payload
-      );
+      console.log('123')
+      setValue("clienteNumber","213")
+      // const { data: responseData } = await api.post(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      //   payload
+      // );
 
       //router.push("/agendamentos");
     } catch (err: any) {
@@ -60,6 +63,14 @@ export default function FormInvoice() {
         <S.InputContainer>
           <InputClienteNumber />
         </S.InputContainer>
+        <button 
+        type="button" 
+        onClick={() => { 
+          console.log(123)
+          setValue("clienteNumber", "123"); 
+        }} 
+      > 
+        TESTES      </button>
         <S.InputContainer>
           <InputInstallationNumber />
         </S.InputContainer>
