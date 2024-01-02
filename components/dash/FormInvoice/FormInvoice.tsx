@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { invoiceFormSchema } from "./schemas";
-import { LoginFormPayload } from "./types";
+import { InvoiceFormPayload } from "./types";
 
 import * as S from "./styles";
 import * as StyleDash from "../styles";
@@ -30,20 +30,39 @@ import { InputEnergySCEEEConsumption } from "./InputEnergySCEEEConsumption/Input
 import { InputEnergySCEEECost } from "./InputEnergySCEEECost/InputEnergySCEEECost";
 import { InputInvoiceAmount } from "./InputInvoiceAmount/InputInvoiceAmount";
 import { useForm, useFormContext } from "react-hook-form";
+import { InputMunicipalContribution } from "./InputMunicipalContribution/InputMunicipalContribution";
+import moment from "moment";
+import dayjs from "dayjs";
 
 export default function FormInvoice() {
+  const methods = useFormContext();
+// console.log(useFormContext().setValue("clienteNumber", "123"))
   const router = useRouter();
-  const {setValue}= useFormContext();
-  async function handleSubmit(payload: LoginFormPayload) {
+  async function handleSubmit(payload: InvoiceFormPayload) {
     try {
-      console.log('123')
-      setValue("clienteNumber","213")
-      // const { data: responseData } = await api.post(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-      //   payload
-      // );
+      console.log(payload)
+      const payloadFormat = {
+        client_number: payload.clientNumber,
+        installation_number: payload.installationNumber,
+        date_consumption: dayjs(payload.dateConsumption).format('YYYY-MM'),
+        electrical_energy_measure: payload.electricalEnergyMeasure,
+        electrical_energy_consumption: payload.electricalEnergyConsumption,
+        electrical_energy_cost: payload.electricalEnergyCost,
+        energy_sceee_measure: payload.energySCEEEMeasure,
+        energy_sceee_consumption: payload.energySCEEEConsumption,
+        energy_sceee_cost: payload.energySCEEECost,
+        energy_gdi_measure: payload.energyGDIMeasure,
+        energy_gdi_consumption: payload.energyGDIConsumption,
+        energy_gdi_cost: payload.energyGDICost,
+        municipal_contribution: payload.municipalContribution,
+        invoice_amount: payload.invoiceAmount
+      }
+      const { data: responseData } = await api.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/create-invoice`,
+        payloadFormat
+      );
 
-      //router.push("/agendamentos");
+      router.push("/lista");
     } catch (err: any) {
       const { message } = err.response?.data;
     } finally {
@@ -67,7 +86,9 @@ export default function FormInvoice() {
         type="button" 
         onClick={() => { 
           console.log(123)
-          setValue("clienteNumber", "123"); 
+          if (methods.setValue) {
+            methods.setValue("clienteNumber","213")
+          }
         }} 
       > 
         TESTES      </button>
@@ -110,7 +131,9 @@ export default function FormInvoice() {
         <S.InputContainer>
           <InputEnergySCEEECost/>
         </S.InputContainer>
-
+        <S.InputContainer>
+          <InputMunicipalContribution/>
+        </S.InputContainer>
         <StyleDash.SubmitButton
           color="primary"
           variant="contained"

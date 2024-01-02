@@ -3,5 +3,5 @@ import { useFormContext } from "react-hook-form";
 
 export function InputClienteNumber() {
   const { control } = useFormContext();
-  return <InputForm controller={{ name: "clienteNumber", control }} label="N do cliente" />;
+  return <InputForm controller={{ name: "clientNumber", control }} label="N do cliente" />;
 }

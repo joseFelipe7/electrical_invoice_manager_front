@@ -20,7 +20,6 @@ import {
 } from "@tremor/react";
 
 import moment from "moment";
-moment.locale('pt-br');
 
 
 import { useEffect, useState } from "react";
@@ -46,7 +45,7 @@ export default function FinalDashboard() {
         let datesOptions: string[] = []
         
         setInvoices(data.data.map((item:any)=>{
-          let dateFormat = moment(item.date_consumption).format('MMM/YYYY')
+          let dateFormat = moment.utc(item.date_consumption).format('MMM/YYYY')
           if(!datesOptions.includes(dateFormat)) datesOptions.push(dateFormat)
           return {
             id:item.id,

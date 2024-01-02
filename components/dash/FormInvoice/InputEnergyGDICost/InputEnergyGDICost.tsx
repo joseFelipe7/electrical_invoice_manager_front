@@ -3,5 +3,5 @@ import { useFormContext } from "react-hook-form";
 
 export function InputEnergyGDICost() {
   const { control } = useFormContext();
-  return <InputForm controller={{ name: "energyGDICost", control }} label="Energia compensada GD I Valor" />;
+  return <InputForm input={{ type: "number" }} controller={{ name: "energyGDICost", control }} label="Energia compensada GD I Valor" />;
 }
