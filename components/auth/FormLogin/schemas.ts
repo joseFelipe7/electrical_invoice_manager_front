@@ -6,6 +6,6 @@ export const loginFormSchema = yup
     password: yup
       .string()
       .required("Campo obrigatório")
-      .min(6, "Senha não pode ter menos de 6 dígitos"),
+      .min(3, "Senha não pode ter menos de 3 dígitos"),
   })
   .required();

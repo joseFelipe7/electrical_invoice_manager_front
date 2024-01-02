@@ -40,7 +40,6 @@ export default function FormInvoice() {
   const router = useRouter();
   async function handleSubmit(payload: InvoiceFormPayload) {
     try {
-      console.log(payload)
       const payloadFormat = {
         client_number: payload.clientNumber,
         installation_number: payload.installationNumber,

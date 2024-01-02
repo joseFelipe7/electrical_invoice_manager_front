@@ -38,6 +38,19 @@ export const SubmitButton = styled(Button)`
   border-radius: 24px !important;
   margin-top: 24px;
   font-weight: 700;
+  background: var(--important-info-color);
+
+  transition: background 0.3s ease;
+
+  box-shadow: 0px 2px 16px 0px rgb(255 91 0 / 32%),
+    0px 4px 5px 0px rgb(255 91 0 / 7%), 0px -1px 17px 8px rgb(255 91 0 / 2%);
+
+  &:hover {
+    background: var(--important-info-shadow);
+
+    box-shadow: 0px 2px 16px 0px rgb(255 91 0 / 32%),
+      0px 4px 5px 0px rgb(255 91 0 / 7%), 0px -1px 17px 8px rgb(255 91 0 / 2%);
+  }
 `;
 
 export const FormContainer = styled(Box)`

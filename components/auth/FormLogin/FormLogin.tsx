@@ -14,6 +14,7 @@ import * as S from "./styles";
 import { InputEmail } from "./InputEmail/InputEmail";
 import { BaseForm } from "@/components/shared/BaseForm/BaseForm";
 import api from "@/src/plugins/_core/axiosInstance";
+import { InputPass } from "./InputPass/InputPass";
 
 export default function FormLogin() {
   const router = useRouter();
@@ -21,17 +22,14 @@ export default function FormLogin() {
   async function handleSubmit(payload: LoginFormPayload) {
     try {
       const { data: responseData } = await api.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+        `${process.env.NEXT_PUBLIC_API_URL}/auth`,
         payload
       );
-      const { token } = responseData;
-      const { data: decryptData }: any = jwtDecode(token);
+      const { token } = responseData.authorisation;
+  
+        sessionStorage.setItem("token", token);
 
-      if (decryptData.id) sessionStorage.setItem("userId", decryptData.id);
-      if (decryptData.fullName)
-        sessionStorage.setItem("name", decryptData.fullName);
-
-      router.push("/agendamentos");
+      router.push("/lista");
     } catch (err: any) {
       const { message } = err.response?.data;
     } finally {
@@ -47,14 +45,6 @@ export default function FormLogin() {
           height={38}
           alt="logo image"
         />
-        <S.LogoContainer>
-          <Image
-            src="/assets/nota_fiscal_logo.png"
-            width={236}
-            height={44}
-            alt="logo image"
-          />
-        </S.LogoContainer>
         <BaseForm
           onSubmit={handleSubmit}
           config={{
@@ -66,9 +56,9 @@ export default function FormLogin() {
           <S.InputContainer>
             <InputEmail />
           </S.InputContainer>
-          {/* <S.InputContainer>
+          <S.InputContainer>
             <InputPass />
-          </S.InputContainer> */}
+          </S.InputContainer>
 
           <S.SubmitButton color="primary" variant="contained" type="submit">
             Entrar

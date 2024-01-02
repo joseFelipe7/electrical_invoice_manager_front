@@ -62,11 +62,7 @@ export default function FinalDashboard() {
         setInvoiceDates(datesOptions)
       })
   }, [])
-  useEffect(()=>{
-    console.log(invoices)
-    console.log(invoiceDates)
-    
-  },[invoices, invoiceDates])
+  
   const dateSelected = (invoiceItem: any) => {
     return (invoiceItem.dateConsumption === selectedStatus || selectedStatus === "all")
          && (selectedClients.includes(invoiceItem.clientNumber) || selectedClients.length === 0);
