@@ -34,6 +34,19 @@ import { InputMunicipalContribution } from "./InputMunicipalContribution/InputMu
 import moment from "moment";
 import dayjs from "dayjs";
 
+function FormWrapper({ children, user, isProfile }: any) { 
+  const { setValue } = useFormContext(); 
+  function seta(){
+    setValue("clientNumber", "234")
+  }
+  return ( 
+    <> 
+      {children} 
+ 
+      <button onClick={() => setValue("clientNumber", "234")}>teste</button> 
+    </> 
+  ); 
+} 
 export default function FormInvoice() {
   const methods = useFormContext();
 // console.log(useFormContext().setValue("clienteNumber", "123"))
@@ -71,26 +84,18 @@ export default function FormInvoice() {
   return (
     <S.ContentContainer>
       <BaseForm
-        onSubmit={handleSubmit}
+        onSubmit={FormWrapper.seta}
         config={{
           mode: "onBlur",
           reValidateMode: "onBlur",
           resolver: yupResolver(invoiceFormSchema),
         }}
       >
+        <FormWrapper></FormWrapper>
+
         <S.InputContainer>
           <InputClienteNumber />
         </S.InputContainer>
-        <button 
-        type="button" 
-        onClick={() => { 
-          console.log(123)
-          if (methods.setValue) {
-            methods.setValue("clienteNumber","213")
-          }
-        }} 
-      > 
-        TESTES      </button>
         <S.InputContainer>
           <InputInstallationNumber />
         </S.InputContainer>
